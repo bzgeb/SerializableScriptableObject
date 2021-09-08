@@ -9,9 +9,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 55aac53580944ad499faa9ada126178c, type: 3}
-  m_Name: EntityRegistry
+  m_Script: {fileID: 11500000, guid: 1cd78d41178fb8f43a146e788792b8b8, type: 3}
+  m_Name: EnemyDescriptor
   m_EditorClassIdentifier: 
-  _descriptors:
-  - {fileID: 11400000, guid: 727f8230450e68640b74e5394c3a69e7, type: 2}
-  - {fileID: 11400000, guid: f591262912d7efb4d9d264ebecd45a1f, type: 2}
+  _guid: f591262912d7efb4d9d264ebecd45a1f
+  EntityPrefab: {fileID: 1116730856137304810, guid: d5a630a2f90cbb3408027dbecc96d71f, type: 3}

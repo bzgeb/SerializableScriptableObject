@@ -1,18 +1,17 @@
 ﻿using System;
 using System.IO;
-using UnityEditor;
 using UnityEngine;
 
 [Serializable]
 public struct Guid : IEquatable<Guid>
 {
-    #if UNITY_EDITOR
+#if UNITY_EDITOR
     public const string VALUE0_FIELDNAME = nameof(m_Value0);
     public const string VALUE1_FIELDNAME = nameof(m_Value1);
     public const string VALUE2_FIELDNAME = nameof(m_Value2);
     public const string VALUE3_FIELDNAME = nameof(m_Value3);
-    #endif
-    
+#endif
+
     [SerializeField, HideInInspector] uint m_Value0;
     [SerializeField, HideInInspector] uint m_Value1;
     [SerializeField, HideInInspector] uint m_Value2;
@@ -39,12 +38,16 @@ public struct Guid : IEquatable<Guid>
         m_Value3 = 0U;
         TryParse(hexString, out this);
     }
-    
-    public static bool operator ==(Guid x, Guid y) => x.m_Value0 == y.m_Value0 && x.m_Value1 == y.m_Value1 && x.m_Value2 == y.m_Value2 && x.m_Value3 == y.m_Value3;
+
+    public static bool operator ==(Guid x, Guid y) => x.m_Value0 == y.m_Value0 && x.m_Value1 == y.m_Value1 &&
+                                                      x.m_Value2 == y.m_Value2 && x.m_Value3 == y.m_Value3;
+
     public static bool operator !=(Guid x, Guid y) => !(x == y);
     public bool Equals(Guid other) => this == other;
-    public override bool Equals(object obj) => obj != null && obj is GUID && Equals((GUID) obj);
-    public override int GetHashCode() => (((int) m_Value0 * 397 ^ (int) m_Value1) * 397 ^ (int) m_Value2) * 397 ^ (int) m_Value3;
+    public override bool Equals(object obj) => obj != null && obj is Guid && Equals((Guid) obj);
+
+    public override int GetHashCode() =>
+        (((int) m_Value0 * 397 ^ (int) m_Value1) * 397 ^ (int) m_Value2) * 397 ^ (int) m_Value3;
 
     public string ToHexString()
     {
@@ -61,6 +64,7 @@ public struct Guid : IEquatable<Guid>
 }
 
 #region BinaryReader and BinaryWriter Extensions
+
 public static class BinaryReaderExtensions
 {
     public static Guid ReadGuid(this BinaryReader reader)
@@ -79,4 +83,5 @@ public static class BinaryWriterExtensions
         writer.Write(guid.Value3);
     }
 }
+
 #endregion

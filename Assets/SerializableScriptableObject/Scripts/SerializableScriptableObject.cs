@@ -5,14 +5,14 @@ using UnityEditor;
 
 public class SerializableScriptableObject : ScriptableObject
 {
-    [SerializeField, HideInInspector] string _guid;
-    public string Guid => _guid;
+    [SerializeField] Guid _guid;
+    public Guid Guid => _guid;
 
 #if UNITY_EDITOR
     void OnValidate()
     {
         var path = AssetDatabase.GetAssetPath(this);
-        _guid = AssetDatabase.AssetPathToGUID(path);
+        _guid = new Guid(AssetDatabase.AssetPathToGUID(path));
     }
 #endif
 }

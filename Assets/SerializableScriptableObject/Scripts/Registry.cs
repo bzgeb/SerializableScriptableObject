@@ -5,9 +5,7 @@ public abstract class Registry<T> : ScriptableObject where T : SerializableScrip
 {
     [SerializeField] protected List<T> _descriptors = new List<T>();
 
-    public List<T> Descriptors => _descriptors;
-
-    public T FindByUuid(string guid)
+    public T FindByGuid(Guid guid)
     {
         foreach (var desc in _descriptors)
         {

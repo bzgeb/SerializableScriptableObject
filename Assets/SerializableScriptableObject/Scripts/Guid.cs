@@ -51,7 +51,7 @@ public struct Guid : IEquatable<Guid>
 
     public string ToHexString()
     {
-        return $"{m_Value0:X8} {m_Value1:X8} {m_Value2:X8} {m_Value3:X8}";
+        return $"{m_Value0:X8}{m_Value1:X8}{m_Value2:X8}{m_Value3:X8}";
     }
 
     static void TryParse(string hexString, out Guid guid)
